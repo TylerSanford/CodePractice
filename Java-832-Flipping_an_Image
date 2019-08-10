@@ -1,0 +1,20 @@
+class Solution {
+    public int binarySwitch(int num) {
+        return (num > 0) ? 0 : 1;
+    }
+    
+    public int[][] flipAndInvertImage(int[][] A) {
+        for (int[] intArr : A) {
+            for (int i = 0; i < intArr.length / 2; i++) {
+                int temp = intArr[i];
+                intArr[i] = intArr[intArr.length - i - 1];
+                intArr[intArr.length - i - 1] = temp;
+            }
+            
+            for (int i = 0; i < intArr.length; i++) {
+                intArr[i] = binarySwitch(intArr[i]);
+            }
+        }
+        return A;
+    }
+}
