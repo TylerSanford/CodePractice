@@ -5,14 +5,16 @@ class Solution {
     
     public int[][] flipAndInvertImage(int[][] A) {
         for (int[] intArr : A) {
-            for (int i = 0; i < intArr.length / 2; i++) {
-                int temp = intArr[i];
-                intArr[i] = intArr[intArr.length - i - 1];
+            int lenDiv2 = intArr.length / 2;
+            
+            for (int i = 0; i < lenDiv2; i++) {
+                int temp = binarySwitch(intArr[i]);
+                
+                intArr[i] = binarySwitch(intArr[intArr.length - i - 1]);
                 intArr[intArr.length - i - 1] = temp;
             }
-            
-            for (int i = 0; i < intArr.length; i++) {
-                intArr[i] = binarySwitch(intArr[i]);
+            if (intArr.length % 2 != 0) {
+                intArr[lenDiv2] = binarySwitch(intArr[lenDiv2]);
             }
         }
         return A;
